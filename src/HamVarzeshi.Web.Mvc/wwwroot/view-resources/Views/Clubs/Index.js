@@ -73,15 +73,6 @@
         ]
     });
 
-    // _$form.validate({
-    //     rules: {
-    //         Password: "required",
-    //         ConfirmPassword: {
-    //             equalTo: "#Password"
-    //         }
-    //     }
-    // });
-
     _$form.find('.save-button').on('click', (e) => {
         e.preventDefault();
 

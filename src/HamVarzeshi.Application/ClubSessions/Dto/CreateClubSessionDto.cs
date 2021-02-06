@@ -17,7 +17,7 @@ namespace HamVarzeshi.ClubSessions.Dto
         public string Title { get; set; }
 
         [Required]
-        public Guid ClubId { get; protected set; }
+        public Guid ClubId { get; set; }
 
         [Required]
         public int Duration { get; set; }

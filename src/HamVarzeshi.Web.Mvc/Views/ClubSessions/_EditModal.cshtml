@@ -10,30 +10,50 @@
     <div class="modal-body">
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" role="tab" href="#edit-clubSession-details">@L("ClubSessionDetails")</a>
-            </li>           
+                <a class="nav-link active" data-toggle="tab" role="tab"
+                    href="#edit-clubSession-details">@L("ClubSessionDetails")</a>
+            </li>
         </ul>
         <div class="tab-content mt-4">
             <div role="tabpanel" class="tab-pane container active" id="edit-clubSession-details">
                 <div class="form-group row required">
+                    <label class="col-md-3 col-form-label" for="title">@L("Club")</label>
+                    <select class="form-control" name="ClubId" required>
+                        @foreach (var club in Model.Clubs)
+                        {
+                            if (Model.IsInClub(club))
+                            {
+                                <option value="@club.Id" selected>@club.Title</option>
+                            }
+                            else
+                            {
+                                <option value="@club.Id">@club.Title</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="form-group row required">
                     <label class="col-md-3 col-form-label" for="title">@L("Title")</label>
                     <div class="col-md-9">
-                        <input id="title" type="text" class="form-control" name="Title" value="@Model.ClubSession.Title" required maxlength="128" minlength="2">
+                        <input id="title" type="text" class="form-control" name="Title" value="@Model.ClubSession.Title"
+                            required maxlength="128" minlength="2">
                     </div>
                 </div>
                 <div class="form-group row required">
                     <label class="col-md-3 col-form-label" for="contPerHour">@L("DurationHour")</label>
                     <div class="col-md-9">
-                        <input id="contPerHour" type="number" class="form-control" name="Duration" value="@Model.ClubSession.Duration" required>
+                        <input id="contPerHour" type="number" class="form-control" name="Duration"
+                            value="@Model.ClubSession.Duration" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-md-3 col-form-label" for="IsActive">@L("IsActive")</label>
                     <div class="col-md-9">
-                        <input id="IsActive" type="checkbox" name="IsActive" value="true" @(Model.ClubSession.IsActive ? "checked" : "") />
+                        <input id="IsActive" type="checkbox" name="IsActive" value="true" @(Model.ClubSession.IsActive ?
+                            "checked" : "") />
                     </div>
                 </div>
-            </div>           
+            </div>
         </div>
     </div>
     @await Html.PartialAsync("~/Views/Shared/Modals/_ModalFooterWithSaveAndCancel.cshtml")

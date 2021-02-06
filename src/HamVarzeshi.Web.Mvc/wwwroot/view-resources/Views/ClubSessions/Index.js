@@ -44,17 +44,37 @@
             },
             {
                 targets: 1,
-                data: 'title',
+                data: 'club.title',
                 sortable: false
             },
             {
                 targets: 2,
+                data: 'title',
+                sortable: false
+            },
+            {
+                targets: 3,
+                data: 'duration',
+                sortable: false
+            },
+            {
+                targets: 4,
+                data: 'club.costPerHour',
+                sortable: false
+            },
+            {
+                targets: 5,
+                data: 'totalCosts',
+                sortable: false
+            },
+            {
+                targets: 6,
                 data: 'isActive',
                 sortable: false,
                 render: data => `<input type="checkbox" disabled ${data ? 'checked' : ''}>`
             },
             {
-                targets: 3,
+                targets: 7,
                 data: null,
                 sortable: false,
                 autoWidth: false,
@@ -72,15 +92,6 @@
             }
         ]
     });
-
-    // _$form.validate({
-    //     rules: {
-    //         Password: "required",
-    //         ConfirmPassword: {
-    //             equalTo: "#Password"
-    //         }
-    //     }
-    // });
 
     _$form.find('.save-button').on('click', (e) => {
         e.preventDefault();

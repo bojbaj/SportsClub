@@ -4,14 +4,16 @@ using HamVarzeshi.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HamVarzeshi.Migrations
 {
     [DbContext(typeof(HamVarzeshiDbContext))]
-    partial class HamVarzeshiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210206102435_add_club_sessions")]
+    partial class add_club_sessions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

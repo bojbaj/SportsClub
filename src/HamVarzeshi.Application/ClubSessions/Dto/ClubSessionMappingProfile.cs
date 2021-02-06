@@ -7,7 +7,7 @@ namespace HamVarzeshi.ClubSessions.Dto
     {
         public ClubSessionMappingProfile()
         {
-            CreateMap<ClubSessionDto, ClubSession>();
+            CreateMap<ClubSessionDto, ClubSession>();                
         }
     }
 }

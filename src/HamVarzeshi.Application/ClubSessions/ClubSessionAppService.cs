@@ -20,7 +20,7 @@ namespace HamVarzeshi.ClubSessions
 
         protected override IQueryable<ClubSession> CreateFilteredQuery(PagedClubSessionResultRequestDto input)
         {
-            return Repository.GetAll()
+            return Repository.GetAllIncluding(x => x.Club)
                 .Where(x => input.Keyword.IsNullOrWhiteSpace() || x.Title.Contains(input.Keyword))
                 .Where(x => !input.IsActive.HasValue || x.IsActive == input.IsActive);
         }
