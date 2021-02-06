@@ -69,15 +69,30 @@ namespace HamVarzeshi.Web.Startup
                         icon: "fas fa-theater-masks",
                         permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Roles)
                             )
-                )
-                .AddItem(
+                ).AddItem(
                     new MenuItemDefinition(
                         PageNames.About,
                         L("About"),
                         url: "About",
                         icon: "fas fa-info-circle"
-                    )                
-                );
+                    )
+                ).AddItem(
+                    new MenuItemDefinition(
+                        PageNames.ClubSessionRegisters,
+                        L("RegisterClubSession"),
+                        url: "ClubSessionRegisters",
+                        icon: "fas fa-list",
+                        requiresAuthentication: true
+                    )
+                ).AddItem(
+                    new MenuItemDefinition(
+                        PageNames.RegisterClubSession,
+                        L("RegisterNewClubSession"),
+                        url: "RegisterNewSession",
+                        icon: "fas fa-bookmark",
+                        requiresAuthentication: true
+                    )
+                ); 
         }
 
         private static ILocalizableString L(string name)

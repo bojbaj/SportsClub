@@ -8,8 +8,8 @@ namespace HamVarzeshi.ClubSessions.Dto
     [AutoMapFrom(typeof(ClubSession))]
     public class ClubSessionDto : AuditedEntityDto<Guid>
     {
-        public virtual Club Club { get; set; }
-        public virtual Guid ClubId { get; set; }
+        public Club Club { get; set; }
+        public Guid ClubId { get; set; }
         public string Title { get; set; }
         public int Duration { get; set; }
         public bool IsActive { get; set; }

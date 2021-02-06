@@ -19,7 +19,10 @@
     <text name="TotalCosts" value="Total Costs" />
     <text name="CreateNewClubSession" value="Create new club session" />
     <text name="ClubSessionDetails" value="Club session details" />
-
+    
+    <text name="ClubSessionRegisters" value="Club session registers" />
+    <text name="RegisterClubSession" value="Register club sessions" />
+    <text name="RegisterNewClubSession" value="Register new session" />
 
     <text name="HomePage" value="Home page" />
     <text name="About" value="About" />

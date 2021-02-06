@@ -9,5 +9,7 @@
         public const string Roles = "Roles"; 
         public const string Clubs = "Clubs"; 
         public const string ClubSessions = "Club Sessions"; 
+        public const string ClubSessionRegisters = "Club Session Registers"; 
+        public const string RegisterClubSession = "Register New Club Session"; 
     }
 }
