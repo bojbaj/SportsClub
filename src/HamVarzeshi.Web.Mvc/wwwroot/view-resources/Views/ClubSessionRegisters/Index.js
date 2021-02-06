@@ -130,7 +130,7 @@
                     _clubSessionRegisterService.register({
                         clubSessionId: clubSessionId
                     }).done(() => {
-                        abp.notify.info(l('SuccessfullyClubSessionRegistered'), clubSessionName);
+                        abp.notify.info(abp.utils.formatString(l('SuccessfullyClubSessionRegistered'), clubSessionName));
                         _$clubSessionRegistersTable.ajax.reload();
                     });
                 }
@@ -155,7 +155,7 @@
                     _clubSessionRegisterService.cancelRegistration({
                         clubSessionId: clubSessionId
                     }).done(() => {
-                        abp.notify.info(l('SuccessfullyCanceledClubSessionRegistration'), clubSessionName);
+                        abp.notify.info(abp.utils.formatString(l('SuccessfullyCanceledClubSessionRegistration'), clubSessionName));
                         _$clubSessionRegistersTable.ajax.reload();
                     });
                 }
