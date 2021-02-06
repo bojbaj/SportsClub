@@ -13,6 +13,7 @@ namespace HamVarzeshi.EntityFrameworkCore
         /* Define a DbSet for each entity of the application */
         public DbSet<Club> Clubs { get; set; }
         public DbSet<ClubSession> ClubSessions { get; set; }
+        public DbSet<ClubSessionRegister> ClubSessionRegisters { get; set; }
         public HamVarzeshiDbContext(DbContextOptions<HamVarzeshiDbContext> options)
             : base(options)
         {
