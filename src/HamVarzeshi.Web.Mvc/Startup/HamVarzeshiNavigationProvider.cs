@@ -84,15 +84,7 @@ namespace HamVarzeshi.Web.Startup
                         icon: "fas fa-list",
                         requiresAuthentication: true
                     )
-                ).AddItem(
-                    new MenuItemDefinition(
-                        PageNames.RegisterClubSession,
-                        L("RegisterNewClubSession"),
-                        url: "RegisterNewSession",
-                        icon: "fas fa-bookmark",
-                        requiresAuthentication: true
-                    )
-                ); 
+                );
         }
 
         private static ILocalizableString L(string name)

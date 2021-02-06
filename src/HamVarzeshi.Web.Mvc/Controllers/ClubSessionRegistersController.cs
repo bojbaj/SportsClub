@@ -11,6 +11,8 @@ using HamVarzeshi.Clubs;
 using HamVarzeshi.Clubs.Dto;
 using HamVarzeshi.ClubSessions;
 using HamVarzeshi.ClubSessions.Dto;
+using HamVarzeshi.ClubSessionRegisters.Dto;
+using Abp.Runtime.Security;
 
 namespace HamVarzeshi.Web.Controllers
 {
@@ -27,7 +29,15 @@ namespace HamVarzeshi.Web.Controllers
         public async Task<ActionResult> Index()
         {
             var clubs = (await _clubSessionRegisterAppService.GetClubs()).Items;
-            var clubSessions = (await _clubSessionRegisterAppService.GetClubSessions()).Items;
+
+            var clubSessionResultRequestDto = new PagedClubSessionResultRequestDto();
+            var clubSessions = (await _clubSessionRegisterAppService.GetClubSessions(clubSessionResultRequestDto)).Items;
+
+            var clubSessionRegisterResultRequestDto = new PagedClubSessionRegisterResultRequestDto()
+            {
+                UserId = Convert.ToInt64(User.Identity.GetUserId())
+            };
+            var clubSessionRegisters = (await _clubSessionRegisterAppService.GetAllAsync(clubSessionRegisterResultRequestDto)).Items;
 
             var model = new ClubSessionRegisterListViewModel()
             {

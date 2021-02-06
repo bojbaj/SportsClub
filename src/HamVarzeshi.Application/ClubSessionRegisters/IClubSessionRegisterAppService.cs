@@ -11,7 +11,7 @@ namespace HamVarzeshi.ClubSessionRegisters
     public interface IClubSessionRegisterAppService : IAsyncCrudAppService<ClubSessionRegisterDto, Guid, PagedClubSessionRegisterResultRequestDto, CreateClubSessionRegisterDto, ClubSessionRegisterDto>
     {
         Task<ListResultDto<ClubDto>> GetClubs();
-        Task<ListResultDto<ClubSessionDto>> GetClubSessions();
+        Task<PagedResultDto<ClubSessionForUserDto>> GetClubSessions(PagedClubSessionResultRequestDto input);
 
     }
 }

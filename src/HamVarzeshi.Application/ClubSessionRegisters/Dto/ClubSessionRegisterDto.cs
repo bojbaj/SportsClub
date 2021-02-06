@@ -10,7 +10,7 @@ namespace HamVarzeshi.ClubSessionRegisters.Dto
     {
         public ClubSession ClubSession { get; set; }
         public Guid ClubSessionId { get; set; }
-        public long RegisteredUserId { get; set; }        
+        public long RegisteredUserId { get; set; }
         public decimal TotalCosts
         {
             get
@@ -19,6 +19,6 @@ namespace HamVarzeshi.ClubSessionRegisters.Dto
                     return 0;
                 return ClubSession.Club.CostPerHour * ClubSession.Duration;
             }
-        }
+        }    
     }
 }

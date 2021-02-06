@@ -12,9 +12,9 @@
             var filter = $('#ClubSessionRegistersSearchForm').serializeFormToObject(true);
             filter.maxResultCount = data.length;
             filter.skipCount = data.start;
- 
+
             abp.ui.setBusy(_$table);
-            _clubSessionRegisterService.getAll(filter).done(function (result) {
+            _clubSessionRegisterService.getClubSessions(filter).done(function (result) {
                 callback({
                     recordsTotal: result.totalCount,
                     recordsFiltered: result.totalCount,
@@ -69,25 +69,24 @@
             },
             {
                 targets: 6,
-                data: 'isActive',
-                sortable: false,
-                render: data => `<input type="checkbox" disabled ${data ? 'checked' : ''}>`
-            },
-            {
-                targets: 7,
                 data: null,
                 sortable: false,
                 autoWidth: false,
                 defaultContent: '',
                 render: (data, type, row, meta) => {
-                    return [
-                        `   <button type="button" class="btn btn-sm bg-secondary edit-clubSessionRegister" data-clubSessionRegister-id="${row.id}" data-toggle="modal" data-target="#ClubSessionRegisterEditModal">`,
-                        `       <i class="fas fa-pencil-alt"></i> ${l('Edit')}`,
-                        '   </button>',
-                        `   <button type="button" class="btn btn-sm bg-danger delete-clubSessionRegister" data-clubSessionRegister-id="${row.id}" data-clubSessionRegister-name="${row.name}">`,
-                        `       <i class="fas fa-trash"></i> ${l('Delete')}`,
-                        '   </button>'
-                    ].join('');
+                    if (row.registered) {
+                        return [                        
+                            `   <button type="button" class="btn btn-sm bg-danger delete-clubSessionRegister" data-clubSession-id="${row.id}" data-clubSession-name="${row.title}">`,
+                            `       <i class="fas fa-trash"></i> ${l('Cancel')}`,
+                            '   </button>'
+                        ].join('');    
+                    } else {
+                        return [                        
+                            `   <button type="button" class="btn btn-sm bg-success register-clubSessionRegister" data-clubSession-id="${row.id}" data-clubSession-name="${row.title}">`,
+                            `       <i class="fas fa-pencil-alt"></i> ${l('Register')}`,
+                            '   </button>',
+                        ].join('');    
+                    }
                 }
             }
         ]
@@ -101,7 +100,7 @@
         }
 
         var clubSessionRegister = _$form.serializeFormToObject();
-    
+
         abp.ui.setBusy(_$modal);
         _clubSessionRegisterService.create(clubSessionRegister).done(function () {
             _$modal.modal('hide');
@@ -113,25 +112,25 @@
         });
     });
 
-    $(document).on('click', '.delete-clubSessionRegister', function () {
-        var clubSessionRegisterId = $(this).attr("data-clubSessionRegister-id");
-        var clubSessionRegisterName = $(this).attr('data-clubSessionRegister-name');
+    $(document).on('click', '.register-clubSessionRegister', function () {
+        var clubSessionId = $(this).attr("data-clubSession-id");
+        var clubSessionName = $(this).attr('data-clubSession-name');
 
-        deleteClubSessionRegister(clubSessionRegisterId, clubSessionRegisterName);
+        registerClubSessionRegister(clubSessionId, clubSessionName);
     });
 
-    function deleteClubSessionRegister(clubSessionRegisterId, clubSessionRegisterName) {
+    function registerClubSessionRegister(clubSessionId, clubSessionName) {
         abp.message.confirm(
             abp.utils.formatString(
-                l('AreYouSureWantToDelete'),
-                clubSessionRegisterName),
+                l('AreYouSureWantToRegisterClubSession'),
+                clubSessionName),
             null,
             (isConfirmed) => {
                 if (isConfirmed) {
-                    _clubSessionRegisterService.delete({
-                        id: clubSessionRegisterId
+                    _clubSessionRegisterService.register({
+                        clubSessionId: clubSessionId
                     }).done(() => {
-                        abp.notify.info(l('SuccessfullyDeleted'));
+                        abp.notify.info(l('SuccessfullyClubSessionRegistered'), clubSessionName);
                         _$clubSessionRegistersTable.ajax.reload();
                     });
                 }
@@ -139,34 +138,30 @@
         );
     }
 
-    $(document).on('click', '.edit-clubSessionRegister', function (e) {
-        var clubSessionRegisterId = $(this).attr("data-clubSessionRegister-id");
+    $(document).on('click', '.delete-clubSessionRegister', function () {
+        var clubSessionId = $(this).attr("data-clubSession-id");
+        var clubSessionName = $(this).attr('data-clubSession-name');
 
-        e.preventDefault();
-        abp.ajax({
-            url: abp.appPath + 'ClubSessionRegisters/EditModal?clubSessionRegisterId=' + clubSessionRegisterId,
-            type: 'POST',
-            dataType: 'html',
-            success: function (content) {
-                $('#ClubSessionRegisterEditModal div.modal-content').html(content);
-            },
-            error: function (e) { }
-        });
+        deleteClubSessionRegister(clubSessionId, clubSessionName);
     });
-
-    $(document).on('click', 'a[data-target="#ClubSessionRegisterCreateModal"]', (e) => {
-        $('.nav-tabs a[href="#clubSessionRegister-details"]').tab('show')
-    });
-
-    abp.event.on('clubSessionRegister.edited', (data) => {
-        _$clubSessionRegistersTable.ajax.reload();
-    });
-
-    _$modal.on('shown.bs.modal', () => {
-        _$modal.find('input:not([type=hidden]):first').focus();
-    }).on('hidden.bs.modal', () => {
-        _$form.clearForm();
-    });
+    function deleteClubSessionRegister(clubSessionId, clubSessionName) {
+        abp.message.confirm(
+            abp.utils.formatString(
+                l('AreYouSureWantToCancelClubSessionRegistration'),
+                clubSessionName),
+            null,
+            (isConfirmed) => {
+                if (isConfirmed) {
+                    _clubSessionRegisterService.cancelRegistration({
+                        clubSessionId: clubSessionId
+                    }).done(() => {
+                        abp.notify.info(l('SuccessfullyCanceledClubSessionRegistration'), clubSessionName);
+                        _$clubSessionRegistersTable.ajax.reload();
+                    });
+                }
+            }
+        );
+    }
 
     $('.btn-search').on('click', (e) => {
         _$clubSessionRegistersTable.ajax.reload();

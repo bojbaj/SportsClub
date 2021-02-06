@@ -24,6 +24,11 @@
     <text name="RegisterClubSession" value="Register club sessions" />
     <text name="RegisterNewClubSession" value="Register new session" />
 
+    <text name="AreYouSureWantToRegisterClubSession">Are you sure want to register {0}?</text>
+    <text name="AreYouSureWantToCancelClubSessionRegistration">Are you sure want to cancel {0}?</text>
+    <text name="SuccessfullyCanceledClubSessionRegistration">You registration canceled at {0}?</text>
+    <text name="SuccessfullyClubSessionRegistered">Successfuly registered at {0}?</text>
+
     <text name="HomePage" value="Home page" />
     <text name="About" value="About" />
     <text name="WelcomeMessage" value="Welcome to HamVarzeshi!" />

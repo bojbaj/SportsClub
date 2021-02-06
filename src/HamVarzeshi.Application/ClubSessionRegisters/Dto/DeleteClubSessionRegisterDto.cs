@@ -9,7 +9,7 @@ using HamVarzeshi.Core.Domain;
 
 namespace HamVarzeshi.ClubSessionRegisters.Dto
 {
-    public class CreateClubSessionRegisterDto
+    public class DeleteClubSessionRegisterDto
     {
         [Required]
         public Guid ClubSessionId { get; set; }

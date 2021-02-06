@@ -64,7 +64,7 @@
                         `   <button type="button" class="btn btn-sm bg-secondary edit-club" data-club-id="${row.id}" data-toggle="modal" data-target="#ClubEditModal">`,
                         `       <i class="fas fa-pencil-alt"></i> ${l('Edit')}`,
                         '   </button>',
-                        `   <button type="button" class="btn btn-sm bg-danger delete-club" data-club-id="${row.id}" data-club-name="${row.name}">`,
+                        `   <button type="button" class="btn btn-sm bg-danger delete-club" data-club-id="${row.id}" data-club-name="${row.title}">`,
                         `       <i class="fas fa-trash"></i> ${l('Delete')}`,
                         '   </button>'
                     ].join('');
