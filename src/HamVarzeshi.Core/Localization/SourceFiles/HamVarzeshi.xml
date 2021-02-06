@@ -1,6 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <localizationDictionary culture="en">
   <texts>
+    <text name="Clubs" value="Clubs" />
+    <text name="Title" value="Title" />
+    <text name="Description" value="Description" />
+    <text name="Image" value="Image" />
+    <text name="Rate" value="Rate" />
+    <text name="CostPerHour" value="Cost per hour" />
+
+
+
     <text name="HomePage" value="Home page" />
     <text name="About" value="About" />
     <text name="WelcomeMessage" value="Welcome to HamVarzeshi!" />

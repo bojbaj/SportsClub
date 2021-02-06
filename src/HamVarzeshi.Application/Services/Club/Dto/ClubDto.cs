@@ -1,10 +1,11 @@
 using System;
+using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
-using Abp.Domain.Entities.Auditing;
 
-namespace HamVarzeshi.Core.Domain
+namespace HamVarzeshi.Application.Services.Club.Dto
 {
-    public class Club : AuditedEntity<Guid>
+    [AutoMapFrom(typeof(HamVarzeshi.Core.Domain.Club))]
+    public class ClubDto : AuditedEntityDto<Guid>
     {
         public string Title { get; set; }
         public string Description { get; set; }
