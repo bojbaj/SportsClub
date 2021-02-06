@@ -11,5 +11,6 @@ namespace HamVarzeshi.Core.Domain
         public string Image { get; set; }
         public decimal Rate { get; set; }
         public decimal CostPerHour { get; set; }
+        public bool IsActive { get; set; }
     }
 }

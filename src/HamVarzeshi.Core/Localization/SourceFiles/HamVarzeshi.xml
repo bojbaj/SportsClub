@@ -7,7 +7,9 @@
     <text name="Image" value="Image" />
     <text name="Rate" value="Rate" />
     <text name="CostPerHour" value="Cost per hour" />
-
+    <text name="ClubName" value="Club name" />
+    <text name="CreateNewClub" value="Create new club" />
+    <text name="ClubDetails" value="Club details" />
 
 
     <text name="HomePage" value="Home page" />

@@ -1,0 +1,60 @@
+﻿@using HamVarzeshi.Web.Models.Common.Modals
+@using HamVarzeshi.Web.Models.Clubs
+@model EditClubModalViewModel
+@{
+    Layout = null;
+}
+@await Html.PartialAsync("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("EditClub")))
+<form name="ClubEditForm" role="form" class="form-horizontal">
+    <input type="hidden" name="Id" value="@Model.Club.Id" />
+    <div class="modal-body">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" role="tab" href="#edit-club-details">@L("ClubDetails")</a>
+            </li>           
+        </ul>
+        <div class="tab-content mt-4">
+            <div role="tabpanel" class="tab-pane container active" id="edit-club-details">
+                <div class="form-group row required">
+                    <label class="col-md-3 col-form-label" for="clubname">@L("ClubName")</label>
+                    <div class="col-md-9">
+                        <input id="clubname" type="text" class="form-control" name="Title" value="@Model.Club.Title" required maxlength="128" minlength="2">
+                    </div>
+                </div>
+                <div class="form-group row required">
+                    <label class="col-md-3 col-form-label" for="description">@L("Description")</label>
+                    <div class="col-md-9">
+                        <input id="description" type="text" class="form-control" name="Description" value="@Model.Club.Description" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="image">@L("Image")</label>
+                    <div class="col-md-9">
+                        <input id="image" type="text" class="form-control" name="Image" value="@Model.Club.Image">
+                    </div>
+                </div>
+                <div class="form-group row required">
+                    <label class="col-md-3 col-form-label" for="contPerHour">@L("CostPerHour")</label>
+                    <div class="col-md-9">
+                        <input id="contPerHour" type="number" class="form-control" name="CostPerHour" value="@Model.Club.CostPerHour" required>
+                    </div>
+                </div>
+                <div class="form-group row required">
+                    <label class="col-md-3 col-form-label" for="rate">@L("Rate")</label>
+                    <div class="col-md-9">
+                        <input id="rate" type="number" class="form-control" name="Rate" value="@Model.Club.Rate" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="IsActive">@L("IsActive")</label>
+                    <div class="col-md-9">
+                        <input id="IsActive" type="checkbox" name="IsActive" value="true" @(Model.Club.IsActive ? "checked" : "") />
+                    </div>
+                </div>
+            </div>           
+        </div>
+    </div>
+    @await Html.PartialAsync("~/Views/Shared/Modals/_ModalFooterWithSaveAndCancel.cshtml")
+</form>
+
+<script src="~/view-resources/Views/Clubs/_EditModal.js" asp-append-version="true"></script>
