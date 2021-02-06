@@ -1,0 +1,46 @@
+﻿@using Abp.Authorization.Users
+@using HamVarzeshi.Web.Models.Common.Modals
+@using HamVarzeshi.Web.Models.ClubSessions
+@model ClubSessionListViewModel
+@{
+    Layout = null;
+}
+<div class="modal fade" id="ClubSessionCreateModal" tabindex="-1" role="dialog" aria-labelledby="ClubSessionCreateModalLabel" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            @await Html.PartialAsync("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("CreateNewClubSession")))
+            <form name="clubSessionCreateForm" role="form" class="form-horizontal">
+                <div class="modal-body">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" role="tab" href="#create-clubSession-details">@L("ClubSessionDetails")</a>
+                        </li>                       
+                    </ul>
+                    <div class="tab-content mt-4">
+                        <div role="tabpanel" class="tab-pane container active" id="create-clubSession-details">
+                            <div class="form-group row required">
+                                <label class="col-md-3 col-form-label">@L("Title")</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="Title" required maxlength="128" minlength="2">
+                                </div>
+                            </div>                         
+                            <div class="form-group row required">
+                                <label class="col-md-3 col-form-label">@L("DurationHour")</label>
+                                <div class="col-md-9">
+                                    <input type="number" class="form-control" name="Duration" required>
+                                </div>
+                            </div>                                                 
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="CreateClubSessionIsActive">@L("IsActive")</label>
+                                <div class="col-md-9">
+                                    <input type="checkbox" name="IsActive" value="true" id="CreateClubSessionIsActive" checked />
+                                </div>
+                            </div>
+                        </div>                       
+                    </div>
+                </div>
+                @await Html.PartialAsync("~/Views/Shared/Modals/_ModalFooterWithSaveAndCancel.cshtml")
+            </form>
+        </div>
+    </div>
+</div>

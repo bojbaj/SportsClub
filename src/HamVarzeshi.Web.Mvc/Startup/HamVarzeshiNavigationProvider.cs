@@ -23,11 +23,27 @@ namespace HamVarzeshi.Web.Startup
                     )
                 ).AddItem(
                     new MenuItemDefinition(
-                        PageNames.Clubs,
-                        L("Clubs"),
-                        url: "Clubs",
-                        icon: "fas fa-list",
-                        permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Clubs)
+                        "Clubs",
+                        L("ClubsAndSessions"),
+                        icon: "fas fa-circle"
+                    ).AddItem(
+                        new MenuItemDefinition(
+                            PageNames.Clubs,
+                            L("Clubs"),
+                            url: "Clubs",
+                            icon: "fas fa-list",
+                            order: 1,
+                            permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Clubs)
+                        )
+                    ).AddItem(
+                        new MenuItemDefinition(
+                            PageNames.ClubSessions,
+                            L("ClubSessions"),
+                            url: "ClubSessions",
+                            icon: "fas fa-list",
+                            order: 2,
+                            permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Clubs)
+                        )
                     )
                 ).AddItem(
                     new MenuItemDefinition(

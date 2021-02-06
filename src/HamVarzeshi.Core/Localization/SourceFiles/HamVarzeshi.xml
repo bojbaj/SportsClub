@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <localizationDictionary culture="en">
-  <texts>
+  <texts>  
+    <text name="ClubsAndSessions" value="Clubs and sessions" />
+    
     <text name="Clubs" value="Clubs" />
     <text name="Title" value="Title" />
     <text name="Description" value="Description" />
@@ -10,6 +12,12 @@
     <text name="ClubName" value="Club name" />
     <text name="CreateNewClub" value="Create new club" />
     <text name="ClubDetails" value="Club details" />
+    
+    <text name="ClubSessions" value="Club session" />
+    <text name="DurationHour" value="Duration (Hour)" />
+    <text name="TotalCosts" value="Total Costs" />
+    <text name="CreateNewClubSession" value="Create new club session" />
+    <text name="ClubSessionDetails" value="Club session details" />
 
 
     <text name="HomePage" value="Home page" />

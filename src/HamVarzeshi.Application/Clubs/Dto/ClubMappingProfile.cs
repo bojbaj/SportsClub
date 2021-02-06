@@ -1,4 +1,5 @@
 using AutoMapper;
+using HamVarzeshi.Core.Domain;
 
 namespace HamVarzeshi.Clubs.Dto
 {
@@ -6,7 +7,7 @@ namespace HamVarzeshi.Clubs.Dto
     {
         public ClubMappingProfile()
         {
-            CreateMap<ClubDto, Core.Domain.Club>();
+            CreateMap<ClubDto, Club>();
         }
     }
 }
